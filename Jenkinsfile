@@ -4,7 +4,7 @@ pipeline {
   stage ('Build') {
    steps {
     sh 'printenv'
-    sh 'sudo docker build -t vcojocari/jenkinsdemo:""$BUILD_ID"" .'
+    sh 'docker build -t vcojocari/jenkinsdemo:""$BUILD_ID"" . -S'
    }
   }
   stage('Pushing Docker Image to Dockerhub') {
