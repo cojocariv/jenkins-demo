@@ -4,12 +4,12 @@ pipeline {
   stage ('Build') {
    steps {
     sh 'printenv'
-    sh 'sudo docker build -t -S vcojocari/jenkinsdemo:""BUILD_ID"" .'
+    sh 'sudo docker build -t vcojocari/jenkinsdemo:""BUILD_ID"" .'
    }
   }
   stage ('Publish') {
    steps {
-    withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+    docker.withRegistry([credentialsId: "docker-hub", url: "https://hub.docker.com/repository/docker/vcojocari/jenkinsdemo"]) {
      sh 'sudo docker push vcojocari/jenkinsdemo:""BUILD_ID""'
       }
      }
