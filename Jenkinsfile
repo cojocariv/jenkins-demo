@@ -10,7 +10,7 @@ pipeline {
   stage ('Publish') {
    steps {
     withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
-     sh 'sudo docker push vcojocari/jenkinsdemo:""BUILD_ID""'
+     sh 'sudo docker push -S vcojocari/jenkinsdemo:""BUILD_ID""'
       }
      }
     }
